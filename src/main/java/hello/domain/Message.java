@@ -1,4 +1,4 @@
-package hello;
+package hello.domain;
 
 /**
  * Created by IntelliJ IDEA.
