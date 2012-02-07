@@ -13,4 +13,5 @@ public interface MessageRepository {
     void insertMessage(Message message);
 
     Message selectMessage(Integer id);
+
 }
