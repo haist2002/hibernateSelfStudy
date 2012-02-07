@@ -1,5 +1,6 @@
 package service;
 
+import hello.domain.Message;
 import org.junit.Test;
 
 /**

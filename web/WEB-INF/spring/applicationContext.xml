@@ -60,6 +60,6 @@
     </bean>
     <tx:annotation-driven transaction-manager="myTxManager" />
 
-	<jpa:repositories base-package="hello.repository" />
+	<jpa:repositories base-package="hello.repository.jpaRepository" />
 
 </beans>
