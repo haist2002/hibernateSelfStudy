@@ -1,9 +1,8 @@
 package hello.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,7 +18,7 @@ public class MessageBox {
     private String label;
 
     @OneToMany(mappedBy = "messageBox")
-    private List<Message> messages;
+    private Set<Message> messages;
 
     public MessageBox(String label){
         this.label = label;
@@ -28,11 +27,11 @@ public class MessageBox {
     public MessageBox(){}
 
 
-    public List<Message> getMessages() {
+    public Set<Message> getMessages() {
         return messages;
     }
 
-    public void setMessage(List<Message> messages) {
+    public void setMessages(Set<Message> messages) {
         this.messages = messages;
     }
 
