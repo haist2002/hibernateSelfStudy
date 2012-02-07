@@ -14,4 +14,8 @@ public interface MessageBoxService {
     void saveMessageBox(MessageBox messageBox);
 
     MessageBox getMessageBox(String label);
+
+    void saveMessageBoxJPA(MessageBox messageBox);
+
+    MessageBox getMessageBoxJPA(String label);
 }
