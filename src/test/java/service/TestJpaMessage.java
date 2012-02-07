@@ -41,12 +41,16 @@ public class TestJpaMessage {
         MessageBox mb = messageBoxService.getMessageBox("심부름내역");
         mb.getMessages().add(message);
 
+        messageBoxService.saveMessageBoxJPA(mb);
 
+        assertNotNull(messageBoxService.getMessageBoxJPA("심부름내역").getMessages());
 
+        assertEquals(messageBoxService.getMessageBoxJPA("심부름내역").getMessages().size(),1);
     }
 
     @Test
     @Ignore
     public void test이그노어() throws Exception {
+
     }
 }
