@@ -18,7 +18,7 @@ public class Message {
     @Column
     private String text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "label",nullable = false)
     private MessageBox messageBox;
 

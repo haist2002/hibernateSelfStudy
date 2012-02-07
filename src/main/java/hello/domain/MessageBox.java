@@ -17,7 +17,7 @@ public class MessageBox {
     @Id
     private String label;
 
-    @OneToMany(mappedBy = "messageBox")
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "messageBox")
     private Set<Message> messages;
 
     public MessageBox(String label){

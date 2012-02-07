@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import hello.domain.Message;
 import hello.domain.MessageBox;
 import hello.service.MessageBoxService;
+import hello.service.MessageService;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +27,9 @@ public class TestJpaMessage {
     @Autowired
     private MessageBoxService messageBoxService;
 
+    @Autowired
+    private MessageService messageService;
+
     @Test
     public void testMessae_메시지박스_생성_후_저장() throws Exception {
         MessageBox messageBox = new MessageBox("심부름내역");
@@ -39,13 +43,15 @@ public class TestJpaMessage {
         Message message = new Message();
         message.setText("담배사와라!!!! 레종1mg로~~~");
         MessageBox mb = messageBoxService.getMessageBox("심부름내역");
-        mb.getMessages().add(message);
+        message.setMessageBox(mb);
 
-        messageBoxService.saveMessageBoxJPA(mb);
+        messageService.saveMessageJPA(message);
 
-        assertNotNull(messageBoxService.getMessageBoxJPA("심부름내역").getMessages());
+        assertNotNull(messageBoxService.getMessageBoxJPA("심부름내역").getMessages().size());
 
-        assertEquals(messageBoxService.getMessageBoxJPA("심부름내역").getMessages().size(),1);
+        System.out.println(messageBoxService.getMessageBoxJPA("심부름내역").getMessages().size());
+
+        assertNotNull(messageService.getMessageJPA(1).getMessageBox());
     }
 
     @Test
