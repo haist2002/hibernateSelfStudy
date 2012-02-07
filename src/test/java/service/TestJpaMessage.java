@@ -44,6 +44,6 @@ public class TestJpaMessage {
 
     @Test
     public void test브런치테스트() throws Exception {
-        //To change body of created methods use File | Settings | File Templates.
+
     }
 }

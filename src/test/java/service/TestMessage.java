@@ -55,8 +55,4 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
     }
 
-    @Test
-    public void testMessaeBoxTest() throws Exception {
-
-    }
 }
