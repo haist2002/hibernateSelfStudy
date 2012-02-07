@@ -27,6 +27,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
     @Autowired
     private MessageService messageService;
 
+    @Test
+    public void test_메시지박스_생성_후_저장() throws Exception {
+        MessageBox messageBox = new MessageBox("메모");
+
+        messageBoxService.saveMessageBox(messageBox);
+
+        assertEquals(messageBoxService.getMessageBox("메모").getLabel(),"메모");
+
+    }
 
     @Test
     public void test_메시지박스에_메시지넣기() throws Exception {
