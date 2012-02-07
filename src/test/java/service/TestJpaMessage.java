@@ -46,6 +46,6 @@ public class TestJpaMessage {
 
     @Test
     @Ignore
-    public void test이그노어 throws Exception {
+    public void test이그노어() throws Exception {
     }
 }
