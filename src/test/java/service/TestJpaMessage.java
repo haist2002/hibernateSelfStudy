@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import hello.domain.Message;
 import hello.domain.MessageBox;
 import hello.service.MessageBoxServiceImpl;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class TestJpaMessage {
     }
 
     @Test
-    public void test브런치테스트() throws Exception {
-        //To change body of created methods use File | Settings | File Templates.
+    @Ignore
+    public void test이그노어 throws Exception {
     }
 }
