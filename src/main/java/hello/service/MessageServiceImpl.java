@@ -23,7 +23,6 @@ public class MessageServiceImpl implements MessageService{
     public void saveMessage(Message message) {
         messageRepositroy.insertMessage(message);
 
-
     }
 
     public Message getMessage(Integer id) {
