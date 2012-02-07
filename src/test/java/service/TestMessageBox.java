@@ -26,6 +26,7 @@ public class TestMessageBox {
 
     @Test
     public void test_메시지박스_생성_후_저장() throws Exception {
+
         MessageBox messageBox = new MessageBox("메모");
         messageBoxService.saveMessageBox(messageBox);
 
