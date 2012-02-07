@@ -19,7 +19,7 @@ public class MessageBox {
     private String label;
 
     @OneToMany(mappedBy = "messageBox")
-    private List<Message> message;
+    private List<Message> messages;
 
     public MessageBox(String label){
         this.label = label;
@@ -28,12 +28,12 @@ public class MessageBox {
     public MessageBox(){}
 
 
-    public List<Message> getMessage() {
-        return message;
+    public List<Message> getMessages() {
+        return messages;
     }
 
-    public void setMessage(List<Message> message) {
-        this.message = message;
+    public void setMessage(List<Message> messages) {
+        this.messages = messages;
     }
 
     public String getLabel() {

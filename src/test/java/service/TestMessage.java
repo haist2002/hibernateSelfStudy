@@ -52,8 +52,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
         messageService.saveMessage(message);
 
         assertEquals(messageService.getMessage(1).getText(),"Hello Hibernate");
-        assertNotNull(messageBoxFactory.getMessageBox("메모").getMessage());
-        assertEquals(messageBoxFactory.getMessageBox("메모").getMessage().size(),1);
+        assertNotNull(messageBoxFactory.getMessageBox("메모").getMessages());
+        assertEquals(messageBoxFactory.getMessageBox("메모").getMessages().size(),1);
 
     }
 

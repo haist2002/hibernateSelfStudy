@@ -31,7 +31,7 @@ public class MessageBoxRepositoryImpl implements MessageBoxRepository{
 
     public MessageBox getMessageBox(String label) {
         MessageBox mb = (MessageBox) getSession().get(MessageBox.class,label);
-        mb.getMessage().size();
+        mb.getMessages().size();
       return  mb;
     }
 }
