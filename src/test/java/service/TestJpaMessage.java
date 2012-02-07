@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import hello.domain.Message;
 import hello.domain.MessageBox;
 import hello.service.MessageBoxService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,27 +24,34 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestJpaMessage {
 
     @Autowired
-    private MessageBoxService messageService;
+    private MessageBoxService messageBoxService;
 
     @Test
     public void testMessae_메시지박스_생성_후_저장() throws Exception {
         MessageBox messageBox = new MessageBox("심부름내역");
-        messageService.saveMessageBoxJPA(messageBox);
 
-        assertEquals(messageService.getMessageBoxJPA("심부름내역").getLabel(),"심부름내역");
+        messageBoxService.saveMessageBoxJPA(messageBox);
+
+        assertEquals(messageBoxService.getMessageBoxJPA("심부름내역").getLabel(),"심부름내역");
+
     }
 
     @Test
     public void testMessage_메시지_생성후_저장() throws Exception {
         Message message = new Message();
         message.setText("담배사와라!!!! 레종1mg로~~~");
-        MessageBox mb = messageService.getMessageBox("심부름내역");
+
+        MessageBox mb = messageBoxService.getMessageBox("심부름내역");
+
         mb.getMessages().add(message);
+
+
 
     }
 
     @Test
-    public void test브런치테스트() throws Exception {
+    @Ignore
+    public void test이그노어() throws Exception {
 
     }
 }
