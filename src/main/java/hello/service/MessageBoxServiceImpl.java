@@ -1,5 +1,6 @@
 package hello.service;
 
+import hello.domain.Message;
 import hello.domain.MessageBox;
 import hello.repository.MessageBoxRepository;
 import hello.repository.jpaRepository.MessageBoxJpaRepository;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
  * To change this template use File | Settings | File Templates.
  */
 @Service
-public class MessageBoxFactory {
+public class MessageBoxServiceImpl implements MessageBoxService{
 
     @Autowired
     private MessageBoxRepository messageBoxRepository;

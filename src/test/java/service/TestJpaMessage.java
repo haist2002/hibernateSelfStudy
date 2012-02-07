@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import hello.domain.Message;
 import hello.domain.MessageBox;
-import hello.service.MessageBoxFactory;
+import hello.service.MessageBoxServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestJpaMessage {
 
     @Autowired
-    private MessageBoxFactory messageBoxFactory;
+    private MessageBoxServiceImpl messageBoxFactory;
 
     @Test
     public void testMessae_메시지박스_생성_후_저장() throws Exception {
@@ -40,6 +40,7 @@ public class TestJpaMessage {
         message.setText("담배사와라!!!! 레종1mg로~~~");
         MessageBox mb = messageBoxFactory.getMessageBox("심부름내역");
         mb.getMessages().add(message);
+
 
 
     }
