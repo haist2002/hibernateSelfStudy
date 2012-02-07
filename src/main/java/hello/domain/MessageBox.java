@@ -21,6 +21,13 @@ public class MessageBox {
     @OneToMany(mappedBy = "messageBox")
     private List<Message> message;
 
+    public MessageBox(String label){
+        this.label = label;
+    }
+
+    public MessageBox(){}
+
+
     public List<Message> getMessage() {
         return message;
     }

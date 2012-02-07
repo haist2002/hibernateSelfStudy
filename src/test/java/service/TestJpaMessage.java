@@ -1,7 +1,15 @@
 package service;
 
+import static org.junit.Assert.*;
+
 import hello.domain.Message;
+import hello.domain.MessageBox;
+import hello.service.MessageBoxFactory;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,9 +18,21 @@ import org.junit.Test;
  * Time: 오후 1:50
  * To change this template use File | Settings | File Templates.
  */
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"file:web/WEB-INF/spring/applicationContext.xml"})
 public class TestJpaMessage {
+
+    @Autowired
+    private MessageBoxFactory messageBoxFactory;
+
     @Test
     public void testMessae_메시지_생성후_저장() throws Exception {
+        MessageBox messageBox = new MessageBox("심부름내역");
+        messageBoxFactory.saveMessageBoxJPA(messageBox);
 
+        assertEquals(messageBoxFactory.getMessageBoxJPA("심부름내역").getLabel(),"심부름내역");
+        
+              
     }
 }

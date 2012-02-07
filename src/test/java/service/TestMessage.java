@@ -31,8 +31,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
     @Test
     public void test_메시지박스_생성_후_저장() throws Exception {
-        MessageBox messageBox = new MessageBox();
-        messageBox.setLabel("메모");
+        MessageBox messageBox = new MessageBox("메모");
         messageBoxFactory.saveMessageBox(messageBox);
 
         assertEquals(messageBoxFactory.getMessageBox("메모").getLabel(),"메모");
