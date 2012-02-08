@@ -3,13 +3,20 @@ package service;
 import hello.domain.MessageBox;
 import hello.domain.User;
 import hello.service.MessageBoxService;
+import org.hamcrest.Matcher;
+import org.hamcrest.core.Is;
+import org.hamcrest.core.IsNull;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by IntelliJ IDEA.
@@ -31,22 +38,19 @@ public class TestMessageBox {
         MessageBox messageBox = new MessageBox("메모");
         messageBoxService.saveMessageBox(messageBox);
 
-        assertEquals(messageBoxService.getMessageBox("메모").getLabel(),"메모");
+        assertEquals(messageBoxService.getMessageBox(1).getLabel(),"메모");
 
     }
 
     @Test
     public void testMessageBox_메시지박스_주인_설정_후_업데이트() throws Exception {
-        MessageBox messageBox = messageBoxService.getMessageBoxJPA("메모");
-        User user = new User();
-        user.setName("안병휘");
-        user.setUserid("haist2002");
-//        messageBox.setOwner(user);
-//
-//        messageBoxService.modifyMessageBox(messageBox);
-//
-//        assertEquals(messageBoxService.getMessageBox("메모").getOwner().getName(),"안병휘");
+        MessageBox messageBox = messageBoxService.getMessageBoxJPA(1);
+        messageBox.setLabel("심부름내역");
 
+
+        messageBoxService.modifyMessageBox(messageBox);
+
+        assertThat(messageBoxService.getMessageBox(1), is(notNullValue()));
 
 
     }

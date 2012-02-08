@@ -23,8 +23,8 @@ public class MessageBoxServiceImpl implements MessageBoxService{
     @Autowired
     private MessageBoxJpaRepository messageBoxJpaRepository;
 
-    public MessageBox getMessageBox(String label) {
-        return messageBoxRepository.getMessageBox(label);
+    public MessageBox getMessageBox(Integer no) {
+        return messageBoxRepository.getMessageBox(no);
     }
 
     public void saveMessageBox(MessageBox messageBox) {
@@ -35,8 +35,8 @@ public class MessageBoxServiceImpl implements MessageBoxService{
         messageBoxJpaRepository.save(messageBox);
     }
 
-    public MessageBox getMessageBoxJPA(String label) {
-        return messageBoxJpaRepository.findOne(label);
+    public MessageBox getMessageBoxJPA(Integer no) {
+        return messageBoxJpaRepository.findOne(no);
     }
 
     public void modifyMessageBox(MessageBox messageBox) {

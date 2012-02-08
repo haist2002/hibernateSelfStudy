@@ -19,7 +19,7 @@ public class Message {
     private String text;
 
     @ManyToOne(fetch = FetchType.EAGER,optional = false)
-    @JoinColumn(name = "label",nullable = false)
+    @JoinColumn(name = "no",nullable = false)
     private MessageBox messageBox;
 
 

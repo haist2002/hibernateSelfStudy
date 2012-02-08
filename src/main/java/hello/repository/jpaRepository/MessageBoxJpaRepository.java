@@ -10,5 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Time: 오전 11:34
  * To change this template use File | Settings | File Templates.
  */
-public interface MessageBoxJpaRepository extends JpaRepository<MessageBox,String>{
+public interface MessageBoxJpaRepository extends JpaRepository<MessageBox,Integer>{
 }

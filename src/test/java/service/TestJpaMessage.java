@@ -35,21 +35,21 @@ public class TestJpaMessage {
         MessageBox messageBox = new MessageBox("심부름내역");
         messageBoxService.saveMessageBoxJPA(messageBox);
 
-        assertEquals(messageBoxService.getMessageBoxJPA("심부름내역").getLabel(),"심부름내역");
+        assertEquals(messageBoxService.getMessageBoxJPA(1).getLabel(),"심부름내역");
     }
 
     @Test
     public void testMessage_메시지_생성후_저장() throws Exception {
         Message message = new Message();
         message.setText("담배사와라!!!! 레종1mg로~~~");
-        MessageBox mb = messageBoxService.getMessageBox("심부름내역");
+        MessageBox mb = messageBoxService.getMessageBox(1);
         message.setMessageBox(mb);
 
         messageService.saveMessageJPA(message);
 
-        assertNotNull(messageBoxService.getMessageBoxJPA("심부름내역").getMessages().size());
+        assertNotNull(messageBoxService.getMessageBoxJPA(1).getMessages().size());
 
-        System.out.println(messageBoxService.getMessageBoxJPA("심부름내역").getMessages().size());
+        System.out.println(messageBoxService.getMessageBoxJPA(1).getMessages().size());
 
         assertNotNull(messageService.getMessageJPA(1).getMessageBox());
     }

@@ -17,11 +17,22 @@ import java.util.Set;
 @Entity
 public class MessageBox {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer no;
+
+    @Column
     private String label;
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "messageBox")
     private Set<Message> messages;
+
+    public Integer getNo() {
+        return no;
+    }
+
+    public void setNo(Integer no) {
+        this.no = no;
+    }
 
     public MessageBox(String label){
         this.label = label;
