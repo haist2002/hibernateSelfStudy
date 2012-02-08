@@ -1,10 +1,13 @@
 package service;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.*;
 
 import hello.domain.Message;
 import hello.domain.MessageBox;
 import hello.service.MessageBoxService;
 import hello.service.MessageService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +30,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
     @Autowired
     private MessageService messageService;
 
+    @Before
     @Test
-    public void test_메시지박스_생성_후_저장() throws Exception {
+    public void test_MessageBox_Save_and_Confirm() throws Exception {
         MessageBox messageBox = new MessageBox("메모");
 
         messageBoxService.saveMessageBox(messageBox);
@@ -38,10 +42,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
     }
 
     @Test
-    public void test_메시지박스에_메시지넣기() throws Exception {
-//        MessageBox messageBox = new MessageBox();
-//        messageBox.setLabel("메모");
-//        messageBoxService.saveMessageBox(messageBox);
+    public void test_MessageBox_Input_Message() throws Exception {
 
         assertEquals(messageBoxService.getMessageBox(1).getLabel(),"메모");
         Message message = new Message();
@@ -56,5 +57,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
     }
 
+    @Test
+    public void test_MessageBox_Update_and_Delete() throws Exception {
+        MessageBox messageBox = messageBoxService.getMessageBox(1);
 
+        assertThat(messageBox.getLabel(),is("메모"));
+
+        messageBox.setLabel("심부름내역");
+
+        messageBoxService.modifyMessageBox(messageBox);
+
+        assertThat(messageBoxService.getMessageBox(1).getLabel(), is("심부름내역"));
+
+        messageBoxService.dropMessageBox(messageBox);
+
+        assertThat(messageBoxService.getMessageBox(1),is(nullValue()));
+    }
 }
