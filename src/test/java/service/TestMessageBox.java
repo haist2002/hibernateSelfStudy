@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -56,6 +57,7 @@ public class TestMessageBox {
 
         messageBoxService.dropMessageBox(messageBox);
 
+        assertThat(messageBoxService.getMessageBox(1),is(nullValue()));
     }
 
 }
