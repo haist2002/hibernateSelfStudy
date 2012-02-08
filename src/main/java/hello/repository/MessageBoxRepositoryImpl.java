@@ -37,4 +37,8 @@ public class MessageBoxRepositoryImpl implements MessageBoxRepository{
     public void updateMessageBox(MessageBox messageBox) {
         getSession().update(messageBox);
     }
+
+    public void deleteMessageBox(MessageBox messageBox) {
+        getSession().delete(messageBox);
+    }
 }

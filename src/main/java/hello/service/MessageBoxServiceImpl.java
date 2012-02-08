@@ -42,4 +42,8 @@ public class MessageBoxServiceImpl implements MessageBoxService{
     public void modifyMessageBox(MessageBox messageBox) {
         messageBoxRepository.updateMessageBox(messageBox);
     }
+
+    public void dropMessageBox(MessageBox messageBox) {
+        messageBoxRepository.deleteMessageBox(messageBox);
+    }
 }

@@ -19,4 +19,6 @@ public interface MessageBoxService {
     MessageBox getMessageBoxJPA(Integer no);
 
     void modifyMessageBox(MessageBox messageBox);
+
+    void dropMessageBox(MessageBox messageBox);
 }

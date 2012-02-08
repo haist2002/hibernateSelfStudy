@@ -44,14 +44,17 @@ public class TestMessageBox {
 
     @Test
     public void testMessageBox_메시지박스_주인_설정_후_업데이트() throws Exception {
-        MessageBox messageBox = messageBoxService.getMessageBoxJPA(1);
+        MessageBox messageBox = messageBoxService.getMessageBox(1);
+        
+        assertThat(messageBox.getLabel(),is("메모"));
+        
         messageBox.setLabel("심부름내역");
-
 
         messageBoxService.modifyMessageBox(messageBox);
 
-        assertThat(messageBoxService.getMessageBox(1), is(notNullValue()));
+        assertThat(messageBoxService.getMessageBox(1).getLabel(), is("심부름내역"));
 
+        messageBoxService.dropMessageBox(messageBox);
 
     }
 

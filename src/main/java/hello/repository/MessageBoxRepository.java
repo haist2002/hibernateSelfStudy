@@ -15,4 +15,6 @@ public interface MessageBoxRepository {
     MessageBox getMessageBox(Integer no);
 
     void updateMessageBox(MessageBox messageBox);
+
+    void deleteMessageBox(MessageBox messageBox);
 }
