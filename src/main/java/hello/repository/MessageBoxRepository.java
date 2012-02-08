@@ -13,4 +13,6 @@ public interface MessageBoxRepository {
     void save(MessageBox messageBox);
 
     MessageBox getMessageBox(String label);
+
+    void updateMessageBox(MessageBox messageBox);
 }

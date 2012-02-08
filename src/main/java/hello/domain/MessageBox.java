@@ -1,6 +1,9 @@
 package hello.domain;
 
+import org.hibernate.annotations.ForeignKey;
+
 import javax.persistence.*;
+import java.security.acl.Owner;
 import java.util.List;
 import java.util.Set;
 
@@ -42,4 +45,5 @@ public class MessageBox {
     public void setLabel(String label) {
         this.label = label;
     }
+
 }

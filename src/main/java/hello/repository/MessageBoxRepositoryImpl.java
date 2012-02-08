@@ -32,4 +32,8 @@ public class MessageBoxRepositoryImpl implements MessageBoxRepository{
     public MessageBox getMessageBox(String label) {
         return  (MessageBox) getSession().get(MessageBox.class,label);
     }
+
+    public void updateMessageBox(MessageBox messageBox) {
+        getSession().update(messageBox);
+    }
 }

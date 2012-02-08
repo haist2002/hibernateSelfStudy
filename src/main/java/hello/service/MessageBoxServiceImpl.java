@@ -38,4 +38,8 @@ public class MessageBoxServiceImpl implements MessageBoxService{
     public MessageBox getMessageBoxJPA(String label) {
         return messageBoxJpaRepository.findOne(label);
     }
+
+    public void modifyMessageBox(MessageBox messageBox) {
+        messageBoxRepository.updateMessageBox(messageBox);
+    }
 }
