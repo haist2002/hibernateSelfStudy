@@ -49,14 +49,7 @@ public class TestJpaMessage {
 
         assertNotNull(messageBoxService.getMessageBoxJPA(1).getMessages().size());
 
-        System.out.println(messageBoxService.getMessageBoxJPA(1).getMessages().size());
-
         assertNotNull(messageService.getMessageJPA(1).getMessageBox());
     }
 
-    @Test
-    @Ignore
-    public void test이그노어() throws Exception {
-
-    }
 }
