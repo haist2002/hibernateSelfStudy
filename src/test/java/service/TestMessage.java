@@ -30,9 +30,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
     @Test
     public void test_메시지박스_생성_후_저장() throws Exception {
         MessageBox messageBox = new MessageBox("메모");
+
         messageBoxService.saveMessageBox(messageBox);
 
-        assertEquals(messageBoxService.getMessageBox("메모").getLabel(),"메모");
+        assertEquals(messageBoxService.getMessageBox(1).getLabel(),"메모");
 
     }
 
@@ -42,16 +43,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //        messageBox.setLabel("메모");
 //        messageBoxService.saveMessageBox(messageBox);
 
-        assertEquals(messageBoxService.getMessageBox("메모").getLabel(),"메모");
+        assertEquals(messageBoxService.getMessageBox(1).getLabel(),"메모");
         Message message = new Message();
         message.setText("Hello Hibernate");
-        message.setMessageBox(messageBoxService.getMessageBox("메모"));
+        message.setMessageBox(messageBoxService.getMessageBox(1));
 
         messageService.saveMessage(message);
 
         assertEquals(messageService.getMessage(1).getText(),"Hello Hibernate");
-        assertNotNull(messageBoxService.getMessageBox("메모").getMessages());
-        assertEquals(messageBoxService.getMessageBox("메모").getMessages().size(),1);
+        assertNotNull(messageBoxService.getMessageBox(1).getMessages());
+        assertEquals(messageBoxService.getMessageBox(1).getMessages().size(),1);
 
     }
 

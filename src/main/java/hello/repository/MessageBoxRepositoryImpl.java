@@ -23,15 +23,22 @@ public class MessageBoxRepositoryImpl implements MessageBoxRepository{
 
     private Session getSession(){
        return sessionFactory.getCurrentSession();
+
     }
 
     public void save(MessageBox messageBox) {
       getSession().save(messageBox);
     }
 
-    public MessageBox getMessageBox(String label) {
-        MessageBox mb = (MessageBox) getSession().get(MessageBox.class,label);
-        mb.getMessages().size();
-      return  mb;
+    public MessageBox getMessageBox(Integer no) {
+        return  (MessageBox) getSession().get(MessageBox.class,no);
+    }
+
+    public void updateMessageBox(MessageBox messageBox) {
+        getSession().update(messageBox);
+    }
+
+    public void deleteMessageBox(MessageBox messageBox) {
+        getSession().delete(messageBox);
     }
 }

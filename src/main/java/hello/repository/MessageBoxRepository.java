@@ -12,5 +12,9 @@ import hello.domain.MessageBox;
 public interface MessageBoxRepository {
     void save(MessageBox messageBox);
 
-    MessageBox getMessageBox(String label);
+    MessageBox getMessageBox(Integer no);
+
+    void updateMessageBox(MessageBox messageBox);
+
+    void deleteMessageBox(MessageBox messageBox);
 }
