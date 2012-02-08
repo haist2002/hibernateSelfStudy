@@ -24,7 +24,7 @@ public class TestUser{
     private UserService userService;
 
     @Test
-    public void testUser_유저생성_후_저장() throws Exception {
+    public void test_User_Save() throws Exception {
         User user = new User();
         user.setUserid("haist2002");
         user.setName("안병휘");
