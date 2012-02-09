@@ -2,7 +2,6 @@ package service;
 
 import static org.junit.Assert.*;
 import hello.domain.User;
-import hello.domain.UserDetail;
 import hello.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,11 +38,6 @@ public class TestUser{
     @Test
     public void test_OneToOne_UserDetail() throws Exception {
         User user = new User();
-        user.setName("김민경");
-        user.setUserid("mj000044");
-
-        UserDetail userDetail = new UserDetail();
-
 
     }
 }
