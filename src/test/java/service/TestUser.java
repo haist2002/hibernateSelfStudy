@@ -34,4 +34,9 @@ public class TestUser{
 
         assertEquals(user.getName(),temp_user.getName());
     }
+
+    @Test
+    public void test_OneToOne_UserDetail() throws Exception {
+
+    }
 }

@@ -70,7 +70,7 @@ import org.springframework.transaction.annotation.Transactional;
     public void test_MessageBox_Update_and_Delete() throws Exception {
         MessageBox messageBox = messageBoxService.getMessageBox(1);
 
-        assertThat(messageBox.getLabel(),is("메모"));
+        assertThat(messageBox.getLabel(), is("메모"));
 
         messageBox.setLabel("심부름내역");
         messageBoxService.modifyMessageBox(messageBox);
@@ -87,11 +87,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 
         MessageBox messageBox = messageBoxService.getMessageBox(1);
-        assertEquals(messageBox.getLabel(),"메모");
+        assertEquals(messageBox.getLabel(), "메모");
 
         messageBox.setLabel("할일내역");
 
-        assertThat(messageBoxService.getMessageBox(1).getLabel(),is("할일내역"));
+        assertThat(messageBoxService.getMessageBox(1).getLabel(), is("할일내역"));
 
     }
 
@@ -111,4 +111,5 @@ import org.springframework.transaction.annotation.Transactional;
         assertThat(messageBoxService.getMessageBox(1).getLabel(),is("할일내역"));
 
     }
+
 }
