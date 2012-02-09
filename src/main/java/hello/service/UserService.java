@@ -10,7 +10,7 @@ import hello.domain.User;
  * To change this template use File | Settings | File Templates.
  */
 public interface UserService {
-    void saveUser(User user);
+    User saveUser(User user);
 
     User getUser(String userid);
 }
