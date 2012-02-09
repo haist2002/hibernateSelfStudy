@@ -18,8 +18,8 @@ public class Message {
     @Column
     private String text;
 
-    @ManyToOne(targetEntity = MessageBox.class,optional = true)
-    @JoinColumn(name = "label",nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER,optional = false)
+    @JoinColumn(name = "no",nullable = false)
     private MessageBox messageBox;
 
 

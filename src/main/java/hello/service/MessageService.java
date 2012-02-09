@@ -13,4 +13,8 @@ public interface MessageService {
     void saveMessage(Message message);
 
     Message getMessage(Integer id);
+
+    Message getMessageJPA(Integer id);
+
+    void saveMessageJPA(Message message);
 }

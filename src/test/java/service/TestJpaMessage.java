@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 import hello.domain.Message;
 import hello.domain.MessageBox;
 import hello.service.MessageBoxService;
+import hello.service.MessageService;
+import org.hibernate.SessionFactory;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,32 +29,32 @@ public class TestJpaMessage {
     @Autowired
     private MessageBoxService messageBoxService;
 
+    @Autowired
+    private MessageService messageService;
+
+    @Before
     @Test
-    public void testMessae_메시지박스_생성_후_저장() throws Exception {
+    public void testMessaeBox_save_and_confirm() throws Exception {
         MessageBox messageBox = new MessageBox("심부름내역");
 
         messageBoxService.saveMessageBoxJPA(messageBox);
 
-        assertEquals(messageBoxService.getMessageBoxJPA("심부름내역").getLabel(),"심부름내역");
-
+        assertEquals(messageBoxService.getMessageBoxJPA(1).getLabel(),"심부름내역");
     }
 
     @Test
-    public void testMessage_메시지_생성후_저장() throws Exception {
+    public void testMessage_save_and_confirm() throws Exception {
         Message message = new Message();
         message.setText("담배사와라!!!! 레종1mg로~~~");
 
-        MessageBox mb = messageBoxService.getMessageBox("심부름내역");
+        MessageBox mb = messageBoxService.getMessageBox(1);
+        message.setMessageBox(mb);
 
-        mb.getMessages().add(message);
+        messageService.saveMessageJPA(message);
 
+        assertNotNull(messageBoxService.getMessageBoxJPA(1).getMessages().size());
 
-
+        assertNotNull(messageService.getMessageJPA(1).getMessageBox());
     }
 
-    @Test
-    @Ignore
-    public void test이그노어() throws Exception {
-
-    }
 }

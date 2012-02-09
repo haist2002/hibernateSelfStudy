@@ -38,7 +38,7 @@
         <property name="dataSource" ref="dataSource" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="generateDdl" value="true" />
+                <property name="generateDdl" value="false" />
                 <property name="database" value="HSQL" />
             </bean>
         </property>
@@ -49,6 +49,14 @@
 	  <property name="dataSource">
 	    <ref bean="dataSource"/>
 	  </property>
+        <property name="hibernateProperties">
+            <value>
+                hibernate.dialect=org.hibernate.dialect.HSQLDialect
+                hibernate.show_sql=true
+                hibernate.format_sql=true
+                hibernate.connection.autocommit=false
+            </value>
+        </property>
      </bean>
 
 	<bean id="myTxManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">

@@ -1,9 +1,11 @@
 package hello.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import org.hibernate.annotations.ForeignKey;
+
+import javax.persistence.*;
+import java.security.acl.Owner;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,11 +17,22 @@ import java.util.List;
 @Entity
 public class MessageBox {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer no;
+
+    @Column
     private String label;
 
-    @OneToMany(mappedBy = "messageBox")
-    private List<Message> messages;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "messageBox")
+    private Set<Message> messages;
+
+    public Integer getNo() {
+        return no;
+    }
+
+    public void setNo(Integer no) {
+        this.no = no;
+    }
 
     public MessageBox(String label){
         this.label = label;
@@ -28,11 +41,11 @@ public class MessageBox {
     public MessageBox(){}
 
 
-    public List<Message> getMessages() {
+    public Set<Message> getMessages() {
         return messages;
     }
 
-    public void setMessage(List<Message> messages) {
+    public void setMessages(Set<Message> messages) {
         this.messages = messages;
     }
 
@@ -43,4 +56,5 @@ public class MessageBox {
     public void setLabel(String label) {
         this.label = label;
     }
+
 }

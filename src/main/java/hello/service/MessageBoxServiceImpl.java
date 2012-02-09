@@ -6,6 +6,7 @@ import hello.repository.MessageBoxRepository;
 import hello.repository.jpaRepository.MessageBoxJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,8 +24,8 @@ public class MessageBoxServiceImpl implements MessageBoxService{
     @Autowired
     private MessageBoxJpaRepository messageBoxJpaRepository;
 
-    public MessageBox getMessageBox(String label) {
-        return messageBoxRepository.getMessageBox(label);
+    public MessageBox getMessageBox(Integer no) {
+        return messageBoxRepository.getMessageBox(no);
     }
 
     public void saveMessageBox(MessageBox messageBox) {
@@ -35,7 +36,19 @@ public class MessageBoxServiceImpl implements MessageBoxService{
         messageBoxJpaRepository.save(messageBox);
     }
 
-    public MessageBox getMessageBoxJPA(String label) {
-        return messageBoxJpaRepository.findOne(label);
+    public MessageBox getMessageBoxJPA(Integer no) {
+        return messageBoxJpaRepository.findOne(no);
+    }
+
+    public void modifyMessageBox(MessageBox messageBox) {
+        messageBoxRepository.updateMessageBox(messageBox);
+    }
+
+    public void dropMessageBox(MessageBox messageBox) {
+        messageBoxRepository.deleteMessageBox(messageBox);
+    }
+
+    public MessageBox loadMessageBox(Integer no) {
+        return messageBoxRepository.loadMessageBox(no);
     }
 }
