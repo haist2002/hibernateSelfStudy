@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
  * To change this template use File | Settings | File Templates.
  */
 @Repository
-@Transactional
 public class MessageBoxRepositoryImpl implements MessageBoxRepository{
 
     @Autowired
@@ -41,4 +40,9 @@ public class MessageBoxRepositoryImpl implements MessageBoxRepository{
     public void deleteMessageBox(MessageBox messageBox) {
         getSession().delete(messageBox);
     }
+
+    public MessageBox loadMessageBox(Integer no) {
+        return (MessageBox) getSession().load(MessageBox.class,no);
+    }
+
 }

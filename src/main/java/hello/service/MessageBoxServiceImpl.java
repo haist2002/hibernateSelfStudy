@@ -6,6 +6,7 @@ import hello.repository.MessageBoxRepository;
 import hello.repository.jpaRepository.MessageBoxJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
  * Time: 오후 2:56
  * To change this template use File | Settings | File Templates.
  */
-@Service
+@Service @Transactional
 public class MessageBoxServiceImpl implements MessageBoxService{
 
     @Autowired
@@ -45,5 +46,9 @@ public class MessageBoxServiceImpl implements MessageBoxService{
 
     public void dropMessageBox(MessageBox messageBox) {
         messageBoxRepository.deleteMessageBox(messageBox);
+    }
+
+    public MessageBox loadMessageBox(Integer no) {
+        return messageBoxRepository.loadMessageBox(no);
     }
 }

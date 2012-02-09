@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 import hello.domain.Message;
 import hello.domain.MessageBox;
+import hello.repository.MessageBoxRepository;
 import hello.service.MessageBoxService;
 import hello.service.MessageService;
 import org.junit.Before;
@@ -29,6 +30,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
     @Autowired
     private MessageService messageService;
+
 
     @Before
     @Test
@@ -64,7 +66,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
         assertThat(messageBox.getLabel(),is("메모"));
 
         messageBox.setLabel("심부름내역");
-
         messageBoxService.modifyMessageBox(messageBox);
 
         assertThat(messageBoxService.getMessageBox(1).getLabel(), is("심부름내역"));
@@ -73,4 +74,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
         assertThat(messageBoxService.getMessageBox(1),is(nullValue()));
     }
+
+    @Test
+    public void test_MessageBox_Load() throws Exception {
+
+
+        MessageBox messageBox = messageBoxService.getMessageBox(1);
+        messageBox.setLabel("할일내역");
+
+        assertThat(messageBoxService.getMessageBox(1).getLabel(),is("할일내역"));
+
+    }
+
 }
