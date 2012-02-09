@@ -111,4 +111,5 @@ import org.springframework.transaction.annotation.Transactional;
         assertThat(messageBoxService.getMessageBox(1).getLabel(),is("할일내역"));
 
     }
+
 }
