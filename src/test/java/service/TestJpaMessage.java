@@ -5,6 +5,7 @@ import hello.domain.Message;
 import hello.domain.MessageBox;
 import hello.service.MessageBoxService;
 import hello.service.MessageService;
+import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;

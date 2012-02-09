@@ -8,12 +8,17 @@ import hello.domain.MessageBox;
 import hello.repository.MessageBoxRepository;
 import hello.service.MessageBoxService;
 import hello.service.MessageService;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * Created by IntelliJ IDEA.
  * User: haist2002
@@ -31,6 +36,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
     @Autowired
     private MessageService messageService;
 
+    @Autowired
+    private SessionFactory sessionFactory;
 
     @Before
     @Test
@@ -80,10 +87,28 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
         MessageBox messageBox = messageBoxService.getMessageBox(1);
+        assertEquals(messageBox.getLabel(),"메모");
+
         messageBox.setLabel("할일내역");
 
         assertThat(messageBoxService.getMessageBox(1).getLabel(),is("할일내역"));
 
     }
 
+    @Test
+    public void test_Persistence_Test() throws Exception {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        MessageBox messageBox = (MessageBox)session.get(MessageBox.class,1);
+        assertThat(messageBox.getLabel(),is("메모"));
+
+        messageBox.setLabel("할일내역");
+
+        tx.commit();
+        session.close();
+
+        assertThat(messageBoxService.getMessageBox(1).getLabel(),is("할일내역"));
+
+    }
 }

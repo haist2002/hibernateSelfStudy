@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Time: 오후 2:56
  * To change this template use File | Settings | File Templates.
  */
-@Service @Transactional
+@Service
 public class MessageBoxServiceImpl implements MessageBoxService{
 
     @Autowired
