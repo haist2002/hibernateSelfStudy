@@ -21,4 +21,7 @@ public interface MessageBoxService {
     void modifyMessageBox(MessageBox messageBox);
 
     void dropMessageBox(MessageBox messageBox);
+
+    MessageBox loadMessageBox(Integer no);
+
 }

@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserJpaRepository userJpaRepository;
 
-    public void saveUser(User user) {
-        userJpaRepository.save(user);
+    public User saveUser(User user) {
+        return userJpaRepository.save(user);
     }
 
     public User getUser(String userid) {

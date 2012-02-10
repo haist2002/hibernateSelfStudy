@@ -18,6 +18,17 @@ public class User {
     @Column
     private String name;
 
+    @OneToOne//(fetch = FetchType.LAZY)
+    private UserDetail userDetail;
+
+    public UserDetail getUserDetail() {
+        return userDetail;
+    }
+
+    public void setUserDetail(UserDetail userDetail) {
+        this.userDetail = userDetail;
+    }
+
     public String getUserid() {
         return userid;
     }

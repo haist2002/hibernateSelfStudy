@@ -1,5 +1,7 @@
 package hello.domain;
 
+import org.hibernate.annotations.LazyToOne;
+
 import javax.persistence.*;
 
 /**
@@ -17,6 +19,17 @@ public class UserDetail {
 
     @Column
     private String Email;
+
+    @OneToOne//(fetch = FetchType.LAZY)
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Integer getId() {
         return id;

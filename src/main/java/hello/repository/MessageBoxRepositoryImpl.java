@@ -14,8 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Time: 오후 3:18
  * To change this template use File | Settings | File Templates.
  */
-@Repository
-@Transactional
+@Repository  @Transactional
 public class MessageBoxRepositoryImpl implements MessageBoxRepository{
 
     @Autowired
@@ -41,4 +40,9 @@ public class MessageBoxRepositoryImpl implements MessageBoxRepository{
     public void deleteMessageBox(MessageBox messageBox) {
         getSession().delete(messageBox);
     }
+
+    public MessageBox loadMessageBox(Integer no) {
+        return (MessageBox) getSession().load(MessageBox.class,no);
+    }
+
 }

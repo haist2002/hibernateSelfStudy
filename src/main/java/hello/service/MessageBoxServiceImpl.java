@@ -6,6 +6,7 @@ import hello.repository.MessageBoxRepository;
 import hello.repository.jpaRepository.MessageBoxJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -45,5 +46,9 @@ public class MessageBoxServiceImpl implements MessageBoxService{
 
     public void dropMessageBox(MessageBox messageBox) {
         messageBoxRepository.deleteMessageBox(messageBox);
+    }
+
+    public MessageBox loadMessageBox(Integer no) {
+        return messageBoxRepository.loadMessageBox(no);
     }
 }
