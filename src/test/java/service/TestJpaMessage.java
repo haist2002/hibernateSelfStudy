@@ -46,6 +46,7 @@ public class TestJpaMessage {
     public void testMessage_save_and_confirm() throws Exception {
         Message message = new Message();
         message.setText("담배사와라!!!! 레종1mg로~~~");
+
         MessageBox mb = messageBoxService.getMessageBox(1);
         message.setMessageBox(mb);
 

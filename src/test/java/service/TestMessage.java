@@ -74,7 +74,6 @@ import java.util.ArrayList;
 
     }
 
-
     @Test
     public void test_MessageBox_Update_and_Delete() throws Exception {
         MessageBox messageBox = messageBoxService.getMessageBox(1);
@@ -120,6 +119,7 @@ import java.util.ArrayList;
         assertThat(messageBoxService.getMessageBox(1).getLabel(),is("할일내역"));
 
     }
+
 
     @Test
     public void test_Criteria_Test() throws Exception {
