@@ -8,9 +8,15 @@ import hello.domain.MessageBox;
 import hello.repository.MessageBoxRepository;
 import hello.service.MessageBoxService;
 import hello.service.MessageService;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.AliasToBeanConstructorResultTransformer;
+import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +24,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 
 /**
  * Created by IntelliJ IDEA.
@@ -112,4 +120,57 @@ import org.springframework.transaction.annotation.Transactional;
 
     }
 
+    @Test
+    public void test_Criteria_Test() throws Exception {
+        MessageBox temp_messageBox = messageBoxService.getMessageBox(1);
+        for (int i=0; i< 10 ; i++){
+            Message temp_message = new Message();
+            temp_message.setText(String.valueOf(i));
+            temp_message.setMessageBox(temp_messageBox);
+            messageService.saveMessage(temp_message);
+        }
+
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        Criteria criteria = session.createCriteria(Message.class);
+
+        ArrayList<Message> messageList = (ArrayList<Message>)criteria.list();
+        assertThat(messageList.size(),is(10));
+
+        tx.commit();
+        session.close();
+
+    }
+
+    @Test
+    public void test_Criteria_Projection_Test() throws Exception {
+        MessageBox temp_messageBox = messageBoxService.getMessageBox(1);
+        for (int i=0; i< 10 ; i++){
+            Message temp_message = new Message();
+            temp_message.setText(String.valueOf(i));
+            temp_message.setMessageBox(temp_messageBox);
+            messageService.saveMessage(temp_message);
+        }
+
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        Criteria criteria = session.createCriteria(Message.class);
+
+        /*
+        ProjectionList projectionList = Projections.projectionList();
+        projectionList.add(Projections.property("text").as("text"));
+
+        criteria.setProjection(projectionList);
+        criteria.setResultTransformer(new AliasToBeanResultTransformer(Message.class));
+        */
+
+        criteria.add(Restrictions.eq("text","1"));
+
+        ArrayList<Message> messageList = (ArrayList<Message>)criteria.list();
+        assertThat(messageList.size(),is(1));
+
+        tx.commit();
+        session.close();
+
+    }
 }
